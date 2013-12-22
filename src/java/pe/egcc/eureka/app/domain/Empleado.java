@@ -2,7 +2,7 @@ package pe.egcc.eureka.app.domain;
 
 public class Empleado {
 
-	private String nombres;
+    private String nombres;
     private String apellidos;
     private String telefono;
     private String idempleado;

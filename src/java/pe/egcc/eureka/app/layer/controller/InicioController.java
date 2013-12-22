@@ -51,7 +51,7 @@ public class InicioController {
 			empleado = service.validar(usuario, clave);
 			destino = "paginaInicial";
 		} catch (Exception e) {
-			destino = "index";
+			destino = "index2";
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, 
 							"Error en inicio de sesión.", 
 							e.getMessage());
@@ -61,9 +61,9 @@ public class InicioController {
 	}
 	
 	public String salir(){
-    HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+                HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
-		return "index";
+		return "index2";
 	}
 	
 	
