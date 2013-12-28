@@ -8,6 +8,7 @@ package pe.egcc.eureka.app.layer.service;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 import pe.egcc.eureka.app.layer.dao.espec.BooksDao;
 
@@ -16,6 +17,7 @@ import pe.egcc.eureka.app.layer.dao.espec.BooksDao;
  * @author AntOniO
  */
 @Service
+@ComponentScan("pe.egcc.eureka.app.layer.dao")
 public class AccionesService {
 
     @Autowired

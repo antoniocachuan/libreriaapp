@@ -8,6 +8,7 @@ package pe.egcc.eureka.app.layer.dao.impl;
 
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Repository;
 import pe.egcc.eureka.app.domain.Empleado;
 import pe.egcc.eureka.app.layer.dao.espec.BooksDao;
 
@@ -15,6 +16,7 @@ import pe.egcc.eureka.app.layer.dao.espec.BooksDao;
  *
  * @author AntOniO
  */
+@Repository
 public class BooksDaoImpl extends AbstractDao implements BooksDao{
 
     @Override
