@@ -25,5 +25,9 @@ public class IngresoService {
 		return emp;		
 		
 	}
+        
+        public void registrar(Empleado empleado){
+            empleadoCrudDao.crear(empleado);
+        }
 
 }

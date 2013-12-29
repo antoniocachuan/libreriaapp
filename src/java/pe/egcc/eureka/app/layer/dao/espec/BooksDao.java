@@ -17,4 +17,10 @@ import pe.egcc.eureka.app.domain.Empleado;
 public interface BooksDao extends CrudDao<Empleado>{
     
     List<Map<String, Object>> listarLibros();
+
+    List<Map<String, Object>> listarLibrosLiteratura();
+    
+    List<Map<String, Object>> listarLibrosInformatica();
+    
+    List<Map<String, Object>> listarArticulos();
 }

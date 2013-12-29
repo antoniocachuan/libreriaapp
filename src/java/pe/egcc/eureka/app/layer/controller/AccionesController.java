@@ -13,6 +13,7 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+import pe.egcc.eureka.app.domain.Books;
 import pe.egcc.eureka.app.layer.service.AccionesService;
 
 /**
@@ -29,6 +30,22 @@ public class AccionesController {
     private AccionesService accionesService;
 
     private List<Map<String, Object>> lista;
+    
+    private String tipo;
+    
+    private Books libroseleccionado;
+
+    public void setLibroseleccionado(Books libroseleccionado) {
+        this.libroseleccionado = libroseleccionado;
+    }
+
+    public Books getLibroseleccionado() {
+        return libroseleccionado;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
 
     public List<Map<String, Object>> getLista() {
         if (lista == null) {
@@ -37,7 +54,35 @@ public class AccionesController {
         return lista;
     }
 
-    public void consultarMovimientos() {
+    public String consultarLibros() {
+        String destino;
         lista = accionesService.listarLibros();
+        tipo="Todos los Libros";
+        destino = "listarLibros";
+        return destino;
     }
+
+    public String consultarLibrosLiteratura() {
+        String destino;
+        tipo="Libros de Literatura";
+        lista = accionesService.listarLibrosLiteratura();
+        destino = "listarLibros";
+        return destino;
+    }
+    
+    public String consultarLibrosInformatica() {
+        String destino;
+        tipo="Libros de Informática";
+        lista = accionesService.listarLibrosInformatica();
+        destino = "listarLibros";
+        return destino;
+    }
+    public String consultarArticulos() {
+        String destino;
+        tipo="Artículos Diversos";
+        lista = accionesService.listarArticulos();
+        destino = "listarLibros";
+        return destino;
+    }
+    
 }

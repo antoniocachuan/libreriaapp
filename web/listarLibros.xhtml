@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <h:body>
+        <ui:composition template="./plantilla/plantillaPrincipal.xhtml">
+            <ui:define name="content">
+                <h:form id="form" class="well">  
+                    <h1>#{accionesController.tipo}</h1>
+                    <p:dataGrid var="r" value="#{accionesController.lista}" columns="3"  
+                                rows="3" paginator="true"  
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                                rowsPerPageTemplate="3,6,9">  
+                        <p:panel header="#{r.title}" style="text-align:center">  
+                            <h:panelGrid columns="1" style="width:100%">  
+                                <p:graphicImage value="/img/libros/#{r.ubicacion}.jpg"/>   
+                                <h:outputText value="#{r.author}" />
+                                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail" >  
+                                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />   
+                                    <f:setPropertyActionListener value="#{r}"   
+                                                                 target="#{r.libroseleccionado}" />
+                                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#resumenLibro">
+                                        Ver Más
+                                    </button>
+                                </p:commandLink>
+                            </h:panelGrid>  
+                        </p:panel>  
+                    </p:dataGrid>
+                    <div class="modal fade" id="resumenLibro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <legend>Detalles del Libro</legend>
+                                        <form class="form form-signup" role="form"> 
+                                            <p:outputPanel id="carDetail" style="text-align:center;">  
+                                                    <p:graphicImage value="/img/libros/#{r.libroseleccionado.ubicacion}.jpg"/>  
+                                                    <h:panelGrid  columns="2" cellpadding="5">  
+                                                        <h:outputLabel for="modelNo" value="Model No: " />  
+                                                        <h:outputText id="modelNo" value="#{r.libroseleccionado.title}" />  
+
+                                                        <h:outputLabel for="year" value="Year: " />  
+                                                        <h:outputText id="year" value="#{r.libroseleccionado.author}" />      
+                                                    </h:panelGrid>    
+                                                <a class="btn btn-sm btn-primary btn-block" role="button">Enviar</a>
+                                            </p:outputPanel>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->    
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

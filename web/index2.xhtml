@@ -35,6 +35,9 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h:form class="form" p:role="form" p:accept-charset="UTF-8" id="login-nav">
+                                            <h:messages style="color: red; background-color: white;" 
+                                                        showSummary="true"
+                                                        showDetail="true"/>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" jsf:id="usuario" placeholder="Usuario" jsf:value="#{inicioController.usuario}"/>             
                                             </div>
@@ -42,7 +45,7 @@ and open the template in the editor.
                                                 <input type="password" class="form-control" jsf:id="clave" placeholder="Contraseña" jsf:value="#{inicioController.clave}"/>
                                             </div>  
                                             <div class="form-group">
-                                                <h:commandButton value="Procesar" class="btn btn-success btn-block" action="#{inicioController.procesar()}"/>
+                                                <h:commandButton value="Entrar" class="btn btn-success btn-block" action="#{inicioController.procesar()}"/>
                                             </div>
                                         </h:form>
                                     </div>
@@ -88,40 +91,44 @@ and open the template in the editor.
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <legend>Registro</legend>
-                            <form class="form form-signup" role="form">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                        <input type="text" class="form-control" placeholder="Usuario" />
+                            <!--<form class="form form-signup" role="form">-->
+                                <h:form class="form" p:role="form" p:accept-charset="UTF-8">
+                                    <h:messages style="color: red; background-color: white;" 
+                                                showSummary="true"
+                                                showDetail="true"/>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                            <input type="text" class="form-control" placeholder="Usuario" jsf:id="usuarionuevo" jsf:value="#{inicioController.nuevoempleado.idempleado}"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Correo electrónico" />
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                            <input type="email" class="form-control" placeholder="Correo electrónico" jsf:id="correo" jsf:value="#{inicioController.nuevoempleado.correo}"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input type="password" class="form-control" placeholder="Contraseña" />
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                            <input type="password" class="form-control" placeholder="Contraseña" jsf:id="clavenuevo" jsf:value="#{inicioController.nuevoempleado.clave}"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input type="text" class="form-control" placeholder="Nombres" />
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                            <input type="text" class="form-control" placeholder="Nombres" jsf:id="nombres" jsf:value="#{inicioController.nuevoempleado.nombres}"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input type="text" class="form-control" placeholder="Apellidos" />
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                            <input type="text" class="form-control" placeholder="Apellidos" jsf:id="apellidos" jsf:value="#{inicioController.nuevoempleado.apellidos}"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <a class="btn btn-sm btn-primary btn-block" role="button">Enviar</a> 
-                            </form>
+                                     <h:commandButton value="Registrarme" class="btn btn-success btn-block" action="#{inicioController.registrar()}"/>
+                                </h:form>
+                            <!--</form>-->
                         </div>
                     </div>
                 </div><!-- /.modal-content -->
