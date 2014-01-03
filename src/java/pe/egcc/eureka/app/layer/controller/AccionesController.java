@@ -5,6 +5,7 @@
  */
 package pe.egcc.eureka.app.layer.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,7 @@ import pe.egcc.eureka.app.layer.service.AccionesService;
 @ManagedBean
 @RequestScoped
 @ComponentScan("pe.egcc.eureka.app.layer.service")
-public class AccionesController {
+public class AccionesController implements Serializable {
 
     @Autowired
     private AccionesService accionesService;
@@ -34,6 +35,16 @@ public class AccionesController {
     private String tipo;
     
     private Books libroseleccionado;
+    
+    private Map<String, Object> libroelegido;
+
+    public Map<String, Object> getLibroelegido() {
+        return libroelegido;
+    }
+
+    public void setLibroelegido(Map<String, Object> libroelegido) {
+        this.libroelegido = libroelegido;
+    }
 
     public void setLibroseleccionado(Books libroseleccionado) {
         this.libroseleccionado = libroseleccionado;

@@ -28,7 +28,7 @@ public class EmpleadoCrudDaoImpl extends AbstractDao implements EmpleadoCrudDao 
     public void crear(Empleado obj) {
         String sql = "insert into shop.persona(idempleado,nombres,"
                 + "apellidos,correo,clave) "
-                + "values(?,?,?,?,?);";
+                + "values(?,?,?,?,?)";
         Object[] parms = {obj.getIdempleado(), obj.getNombres(), obj.getApellidos(), obj.getCorreo(), obj.getClave()};
         jdbcTemplate.update(sql, parms);
     }
