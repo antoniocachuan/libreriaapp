@@ -12,20 +12,23 @@
        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
     <bean id="propertyConfigurer"
-		  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-		  p:location="/WEB-INF/jdbc.properties" />
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="/WEB-INF/jdbc.properties" />
 			 
-  <bean id="dataSource"
-		  class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		  p:driverClassName="${jdbc.driverClassName}"
-		  p:url="${jdbc.url}"
-		  p:username="${jdbc.username}"
-		  p:password="${jdbc.password}" />				
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbc.driverClassName}"		  
+          p:url="jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}" />				
 	
-  <context:component-scan base-package="pe.egcc.eureka.app.layer.controller"/>
-<!--  <context:component-scan base-package="pe.egcc.eureka.app.layer.dao"/>
-  <context:component-scan base-package="pe.egcc.eureka.app.layer.service"/>-->
-<!--  <context:component-scan base-package="com.app.libreria.layer.controller"/>
-  <context:component-scan base-package="com.app.libreria.layer.dao"/>
-  <context:component-scan base-package="com.app.libreria.layer.service"/>-->
+    <context:component-scan base-package="pe.egcc.eureka.app.layer.controller"/>
+    
+    <!--  
+p:url="${jdbc.url}"
+<context:component-scan base-package="pe.egcc.eureka.app.layer.dao"/>
+    <context:component-scan base-package="pe.egcc.eureka.app.layer.service"/>-->
+    <!--  <context:component-scan base-package="com.app.libreria.layer.controller"/>
+    <context:component-scan base-package="com.app.libreria.layer.dao"/>
+    <context:component-scan base-package="com.app.libreria.layer.service"/>-->
 </beans>
