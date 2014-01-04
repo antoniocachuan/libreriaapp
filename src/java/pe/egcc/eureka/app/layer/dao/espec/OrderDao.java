@@ -6,6 +6,8 @@
 
 package pe.egcc.eureka.app.layer.dao.espec;
 
+import java.util.Map;
+import pe.egcc.eureka.app.domain.Order_details;
 import pe.egcc.eureka.app.domain.Orders;
 
 
@@ -15,5 +17,5 @@ import pe.egcc.eureka.app.domain.Orders;
  * @author AntOniO
  */
 public interface OrderDao extends CrudDao<Orders>{
-    void procesarVenta(Orders order);
+    void procesarVenta(Orders order, Order_details order_detail);
 }

@@ -29,7 +29,7 @@ and open the template in the editor.
                                         <p class="list-group-item-text">Elija la cantidad e ingrese los datos del cliente</p>
                                     </a></li>
                                 <li class="disabled"><a href="#">
-                                        <h4 class="list-group-item-heading">Step 3</h4>
+                                        <h4 class="list-group-item-heading">Paso 3</h4>
                                         <p class="list-group-item-text">Entregue la boleta</p>
                                     </a></li>
                             </ul>
@@ -101,7 +101,7 @@ and open the template in the editor.
                                                 <td>   </td>
                                                 <td>   </td>
                                                 <td><h3>Total</h3></td>
-                                                <td class="text-right"><h3><strong> <h:outputText id="total" value="$#{ventaController.cantidad * accionesController.libroelegido.price+5}" ></h:outputText></strong></h3></td>
+                                                <td class="text-right"><h3><strong> <h:outputText id="total" value="" ></h:outputText></strong></h3></td>
                                             </tr>
                                             <tr>
                                                 <td>   </td>
@@ -159,7 +159,9 @@ and open the template in the editor.
                                                 <input type="text" class="form-control" placeholder="Telefono" jsf:id="telefonoCliente" jsf:value="#{ventaController.orders.cc_number}"/>
                                             </div>
                                         </div>
-                                        <h:commandButton value="Terminar" class="btn btn-success btn-block" action="#{ventaController.procesarVenta()}"/>
+                                        <h:commandButton value="Terminar" class="btn btn-success btn-block" action="#{ventaController.procesarVenta()}">
+                                            <f:setPropertyActionListener value="#{accionesController.libroelegido}" target="#{ventaController.libroCompra}" />  
+                                        </h:commandButton>
                                     </h:form>
                                 </div>
                             </div>

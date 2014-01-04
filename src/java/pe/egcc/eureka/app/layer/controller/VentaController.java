@@ -5,6 +5,7 @@
  */
 package pe.egcc.eureka.app.layer.controller;
 
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -24,9 +25,6 @@ import pe.egcc.eureka.app.layer.service.VentaService;
 @ComponentScan("pe.egcc.eureka.app.layer.service")
 public class VentaController {
 
-    /**
-     * Creates a new instance of VentaController
-     */
     @Autowired
     private VentaService ventaService;
 
@@ -34,13 +32,23 @@ public class VentaController {
 
     private Orders orders;
 
+    private Map<String, Object> libroCompra;
+
     @PostConstruct
     public void init() {
         cantidad = 1;
     }
 
+    public Map<String, Object> getLibroCompra() {
+        return libroCompra;
+    }
+
+    public void setLibroCompra(Map<String, Object> libroCompra) {
+        this.libroCompra = libroCompra;
+    }
+
     public Orders getOrders() {
-        if(orders==null){
+        if (orders == null) {
             orders = new Orders();
         }
         return orders;
@@ -62,8 +70,11 @@ public class VentaController {
 
     }
 
-    public void procesarVenta() {
-        ventaService.procesarVenta(orders);
+    public String procesarVenta() {
+        String destino;
+        destino = "boletaVenta";
+        ventaService.procesarVenta(orders, libroCompra, cantidad);
+        return destino;
     }
 
     public String registroVenta() {
